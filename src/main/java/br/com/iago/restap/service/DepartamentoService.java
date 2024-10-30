@@ -1,9 +1,8 @@
 package br.com.iago.restap.service;
 
-import br.com.iago.restap.domain.Cargo;
-import br.com.iago.restap.domain.Departamento;
-
 import java.util.List;
+
+import br.com.iago.restap.domain.Departamento;
 
 public interface DepartamentoService {
     void salvar(Departamento departamento);

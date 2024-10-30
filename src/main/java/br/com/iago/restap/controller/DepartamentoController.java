@@ -37,22 +37,18 @@ public class DepartamentoController {
         return "redirect:/departamentos/cadastrar";
     }
 
-    //    @GetMapping("/editar/{id}")
-//    public String preEditar(@PathVariable("id") Long id, ModelMap modelMap) {
-//        modelMap.addAttribute("departamento", departamentoService.findById(id));
-//        return "/departamento/cadastro";
-//    }
-//
-//    @PostMapping("/editar")
-//    public String editar(Departamento departamento, RedirectAttributes attr) {
-//        departamentoService.editar(departamento);
-//        attr.addFlashAttribute("success", "Departamento editado com sucesso.");
-//        return "departamentos/cadastrar";
-//    }
-    @GetMapping("editar/{id}")
-    public String editar(@PathVariable Long id, ModelMap model) {
-        model.addAttribute("departamento", departamentoService.findById(id));
-        return "departamento/cadastro";
+        @GetMapping("/editar/{id}")
+    public String preEditar(@PathVariable Long id, ModelMap modelMap) {
+        Departamento departamento =departamentoService.findById(id);
+        modelMap.addAttribute("departamento",departamento );
+        return "/departamento/cadastro";
+    }
+
+    @PostMapping("/editar")
+    public String editar(Departamento departamento, RedirectAttributes attr) {
+        departamentoService.editar(departamento);
+        attr.addFlashAttribute("success", "Departamento editado com sucesso.");
+        return "redirect:/departamentos/cadastrar";
     }
 
     @GetMapping("/excluir/{id}")

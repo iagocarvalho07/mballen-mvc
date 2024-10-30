@@ -1,6 +1,5 @@
 package br.com.iago.restap.dao;
 
-import br.com.iago.restap.domain.Departamento;
 import br.com.iago.restap.domain.Funcionario;
 
 import java.util.List;
