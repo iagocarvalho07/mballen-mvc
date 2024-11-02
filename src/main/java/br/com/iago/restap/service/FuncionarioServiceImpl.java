@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -38,5 +39,20 @@ public class FuncionarioServiceImpl implements FuncionarioService {
     @Override
     public List<Funcionario> buscarTodos() {
         return dao.findAll();
+    }
+
+    @Override
+    public List<Funcionario> buscarporNome(String nome) {
+        return dao.findByNome(nome);
+    }
+
+    @Override
+    public List<Funcionario> BuscarporCargo(Long id) {
+        return dao.findByCargo(id);
+    }
+
+    @Override
+    public List<Funcionario> buscarPorDatas(LocalDate entrada, LocalDate saida) {
+        return dao.findByDataEntradaDataSaida(entrada, saida);
     }
 }
