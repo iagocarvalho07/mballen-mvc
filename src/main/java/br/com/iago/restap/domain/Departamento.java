@@ -4,6 +4,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.util.List;
 import java.util.Objects;
@@ -12,8 +15,11 @@ import java.util.Objects;
 @Table(name = "DEPARTAMENTOS")
 public class Departamento extends AbstractEntity {
 
+    @NotBlank(message = "Informe um nome.")
+    @Size(min = 3, max = 60, message = "O nome do departamento deve ter entre {min} e {max} caracteres.")
     @Column(name = "nome", nullable = false, unique = true, length = 60)
     private String nome;
+
 
     @OneToMany(mappedBy = "departamento")
     private List<Cargo> cargos;
